@@ -6,14 +6,15 @@ import {
 } from '../constants';
 
 const AUTH = btoa(CLIENT_ID + ':' + CLIENT_SECRET);
+const API_URL = 'https://api.shutterstock.com/v2/images/search';
 
-export default (ComposedComponent, url, query) => class extends Component {
+export default (ComposedComponent, query) => class extends Component {
   constructor(props) {
     super(props);
     this.state = { images: [] };
   }
   componentDidMount() {
-    axios.get(url, {
+    axios.get(API_URL, {
       params: {
         query: query
       },
